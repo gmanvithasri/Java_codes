@@ -1,5 +1,6 @@
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Scanner;
 
 class Activity {
     int start, finish;
@@ -32,14 +33,17 @@ public class ActivitySelection {
     }
 
     public static void main(String[] args) {
-        Activity[] activities = {
-            new Activity(5, 9),
-            new Activity(1, 2),
-            new Activity(3, 4),
-            new Activity(0, 6),
-            new Activity(5, 7),
-            new Activity(8, 9)
-        };
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the number of activities: ");
+        int n = scanner.nextInt();
+        Activity[] activities = new Activity[n];
+
+        for (int i = 0; i < n; i++) {
+            System.out.println("Enter start and finish time for activity " + (i + 1) + ":");
+            int start = scanner.nextInt();
+            int finish = scanner.nextInt();
+            activities[i] = new Activity(start, finish);
+        }
 
         selectActivities(activities);
     }

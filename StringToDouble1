@@ -1,0 +1,7 @@
+public class StringToDoubleExample2 {
+    public static void main(String[] args) {
+        String numberStr = "678.90";
+        Double number = Double.valueOf(numberStr);
+        System.out.println("The Double object value is: " + number);
+    }
+}

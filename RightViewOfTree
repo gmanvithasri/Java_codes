@@ -1,0 +1,46 @@
+import java.util.*;
+class TreeNode {
+ int val;
+ TreeNode left;
+ TreeNode right;
+ TreeNode(int val) {
+ this.val = val;}}
+public class RightView {
+ public List<Integer> rightSideView(TreeNode
+root) {
+ List<Integer> res = new ArrayList<>();
+ if (root == null) return res;
+ Queue<TreeNode> q = new LinkedList<>();
+ q.offer(root);
+ while (!q.isEmpty()) {
+ int size = q.size();
+ for (int i = 0; i < size; i++) {
+ TreeNode cur = q.poll();
+ if (i == size - 1) {
+ res.add(cur.val);}
+ if (cur.left != null) q.offer(cur.left);
+ if (cur.right != null)
+q.offer(cur.right);}}
+ return res;}
+  public class BellmanFord {
+ public static void main(String[] args) {
+ Scanner sc = new Scanner(System.in);
+ int V = sc.nextInt();
+ int E = sc.nextInt();
+ int S = sc.nextInt();
+ ArrayList<ArrayList<Integer>> edges = new
+ArrayList<>();
+ System.out.println("Enter edges 'u v wt':");
+ for (int i = 0; i < E; i++) {
+ int u = sc.nextInt();
+ int v = sc.nextInt();
+ int wt = sc.nextInt();
+ edges.add(new
+ArrayList<>(Arrays.asList(u, v, wt)));}
+ int[] dist = Solution.bellman_ford(V,
+edges, S);
+ System.out.println("Shortest distance
+from " + S + " to all:");
+ for (int i = 0; i < V; i++) {
+ System.out.print(dist[i] + " ");}
+ System.out.println();}}
